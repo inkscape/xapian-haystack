@@ -1653,7 +1653,7 @@ def _ensure_term_length(text):
             hole = hole[:LONG_TERM_LENGTH]
         elif LONG_TERM_METHOD == 'hash':
             from hashlib import sha224
-            hole = sha224(hole.encode('utf8')).hexdigest()
+            hole = sha224(hole).hexdigest().encode('utf8')
         text = text[:match.start()] + hole + text[match.end():]
 
     # We ignore any errors because truncate may have chopped a unicode in half.
